@@ -1,0 +1,18 @@
+extends base
+{% from "mixins" import make_posts_list %}
+is_index = request.path.strip('/')=='tags'
+
+block title
+	| {{ "Tags" if is_index else tags.join('+') }} | {{ site.title }}
+
+block content
+	if is_index
+		ul.list_with_title
+			for tag_name, tag_count in site.tags
+				li.listing_title
+					a(href="/tags/{{tag_name}}")= tag_name
+					| ({{tag_count}})
+
+	else
+		#posts
+			+make_posts_list()

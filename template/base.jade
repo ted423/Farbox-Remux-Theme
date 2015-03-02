@@ -1,0 +1,70 @@
+html(lang="zh-cn")
+	head
+		meta(http-equiv="content-type", content="text/html; charset=utf-8")
+		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
+		meta(content="yes", name="apple-mobile-web-app-capable")
+		meta(content="black-translucent", name="apple-mobile-web-app-status-bar-style")
+		meta(content="telephone=no", name="format-detection")
+		load("/template/js/redirect.js")
+		load('fonts')
+		link(rel='alternate', type='application/rss+xml', title='atom 1.0', href='/feed')
+		load("pure, jquery#1.10.2, /template/css/basic.css, /template/css/style.scss")
+
+		if not has('favicon.icon')
+			link(rel="shortcut icon", href="/template/favicon.ico")
+
+		if 'webscan.360' in request.path
+			+raise_404()
+
+		title
+			block title
+				site.title
+
+	body
+		#layout.pure-g-r
+			.sidebar.pure-u
+				#avatar
+					a(href="/")
+						img.logo(src="{{site.avatar}}?width=240&height=240&fixed=true", alt=site.title, title="Homepage")
+				h1.site_name
+					a(href="/")= "Take&Give"
+				#switch
+					img(src="/template/img/menu.png", alt="menu icon")
+				ul.nav
+					if has('about.md')
+						li= a_with_selected('/about.md', '关于' if lang=='zh_cn' else 'About')
+					li= a_with_selected('/category', '分类' if lang=='zh_cn' else 'Categories')
+					if site.tags
+						li= a_with_selected('/tags', '标签' if lang=='zh_cn' else 'Tags')
+					li= a_with_selected('/archive', '归档' if lang=='zh_cn' else 'Archive')
+					li= a_with_selected('/feed', '订阅' if lang=='zh_cn' else 'Feed')
+					li#search
+					 	a(href="#")= '搜索' if lang=='zh_cn' else 'Search'
+				.search-bar
+					input#search-bar(type='text', value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+					a(href="javascript:search()")
+						img(src="/template/img/search.png", alt="search icon")
+
+			.content_body.pure-u-1
+				#headbar
+					ul#bar.baro
+						li.bar
+							a(href='/post/er-ci-yuan/zi-ti-bao') 字体包
+						li.bar
+							a(href='/post/code/github') Github
+						li.bar
+							a(href='https://www.google.com/cse/publicurl?cx=014866320412706777795:ebcdms16iuc') Google站内
+				#main
+					block content
+				#footer
+					| Powered by
+					a(href='http://www.farbox.com') FarBox
+					| . &#169;2012-2015 Z.R.E.Y Inc. Theme
+					a Ink
+					|  designed by
+					a(href='http://cyanchen.com/') Cyan Chen
+					|.
+					br
+					span= "友情链接:"
+					a(href="")= ""
+		load("/template/js/scripts.js")
