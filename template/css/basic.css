@@ -51,7 +51,7 @@ td ul{
 	padding-left: 5px;
 }
 
-li:not(.listing_title) > a, a[href*="ed2k"], a[href*="magnet:"],h2.title > a{
+h2.title > a{
 	display:block;
 	white-space:nowrap;/*设置不折行*/
 	text-overflow:ellipsis;/*这就是省略号喽*/
