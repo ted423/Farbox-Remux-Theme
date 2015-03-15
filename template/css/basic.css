@@ -9,6 +9,7 @@ blockquote {
 	margin: 1em 0;
 	padding-left: 1.5em;
 }
+
 table {
 	background-color: transparent;
 	border-collapse: collapse;
@@ -22,10 +23,6 @@ table {
 
 td ul{
 	padding-left: 20px;
-}
-
-.tags a,.category a{
-	color: #555;
 }
 
 .post_body h1{
@@ -54,13 +51,12 @@ td ul{
 	padding-left: 5px;
 }
 
-li:not(.list_title) > a, a[href*="ed2k"], a[href*="magnet:"]{
+li:not(.listing_title) > a, a[href*="ed2k"], a[href*="magnet:"],h2.title > a{
 	display:block;
 	white-space:nowrap;/*设置不折行*/
 	text-overflow:ellipsis;/*这就是省略号喽*/
 	overflow: hidden;/*设置超过的隐藏*/
 }
-
 
 
 hr {

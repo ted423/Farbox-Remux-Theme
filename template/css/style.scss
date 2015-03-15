@@ -6,9 +6,6 @@ $font-color: #333;
 $sidebar-width: 23%;
 $font-family: "Microsoft YaHei","Microsoft Jhenghei","Hiragino Sans GB",Verdana,STSong,Simsun,Arial,Helvetica Neue,Helvetica,sans-serif;
 
-
-
-
 .default-transition {
     -webkit-transition: 0.25s;
     -moz-transition: 0.25s;
@@ -164,16 +161,6 @@ a {
     }
 }
 
-/*
-
-.post_body .search-bar {
-display:block;
-}
-.post_body .search-bar a:hover {
-background:none!important;
-}
-
-*/
 
 #main {
     padding: 3.5em;
@@ -334,7 +321,8 @@ background:none!important;
 
             a {
                 font-size: 14px;
-                padding: 2px;
+                padding: 3px;
+                color: #555;
                 @extend .default-transition;
             ;
 
@@ -355,7 +343,7 @@ background:none!important;
                 margin-right: .1em;
             }
 
-            .tags, .visitors, .source, .ds-thread-count {
+            .category,.tags, .visitors, .source, .ds-thread-count {
                 display: inline-block;
                 margin: 0 .1em;
             }
@@ -526,6 +514,9 @@ background:none!important;
                 display: none;
             }
         }
+        .infobar {
+        	display: none;
+        }
 
         .search-bar {
             display: none !important;
@@ -533,11 +524,20 @@ background:none!important;
 
     }
 
+
     #layout {
         padding: 0;
     }
     #main {
         padding: 1em;
+        
+        .tags{
+            display: none !important;
+        }
+
+        a{
+            line-height: 2;
+        }
     }
     #switch {
         display: block;

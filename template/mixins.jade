@@ -36,7 +36,6 @@ mixin make_posts_list(_posts=None)
 						span.category
 							i.fa.fa-list &nbsp;
 							a(href="/category/{{category_path}}")= category_path
-						span.space=" "
 
 					if post.tags
 						|
@@ -44,6 +43,5 @@ mixin make_posts_list(_posts=None)
 							i.fa.fa-tags &nbsp;
 							for tag in post.tags
 								a(href="/tags/{{tag}}")= tag
-								span.space=" "
 	+make_paginator()
 
