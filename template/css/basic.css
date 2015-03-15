@@ -29,16 +29,21 @@ td ul{
 }
 
 .post_body h1{
-	font-size: 24px;
+	font-size: 23px;
 }
 
 .post_body h2{
-	font-size: 21px;
-	margin-left: 15px !important;
+	font-size: 20px;
+	margin-left: 10px !important;
 }
 
 .post_body h3{
-	font-size: 18px;
+	font-size: 17px;
+	margin-left: 20px;
+}
+
+.post_body h4{
+	font-size: 15px;
 	margin-left: 30px;
 }
 
@@ -49,7 +54,7 @@ td ul{
 	padding-left: 5px;
 }
 
-li>a,a[href*="ed2k"],a[href*="magnet:"]{
+li:not(.list_title) > a, a[href*="ed2k"], a[href*="magnet:"]{
 	display:block;
 	white-space:nowrap;/*设置不折行*/
 	text-overflow:ellipsis;/*这就是省略号喽*/
@@ -248,7 +253,14 @@ menu, ol, ul {
 	vertical-align: top;
 	display: inline-block;
 }
-
+.bar a{
+	padding:7px;
+	border-radius: 5px;
+	font-size: 24px;
+	line-height: 50px;
+	color: #EFEFEF;
+	display: block;
+}
 .toc ul{
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -270,7 +282,7 @@ menu, ol, ul {
 .out pre{
 	border-radius: 10px;
 	text-align:center;
-	background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.8);
+	background: #F5F5F5 none repeat scroll 0% 0%;
 	font-size:1.5em;
 	display: table !important;
 	margin: 0 auto;
@@ -289,9 +301,8 @@ menu, ol, ul {
 }
 
 .select-btn{
-	font-size:10px;
+	font-size:13px;
 	position:absolute;
-	right:63px;
-	border: 1px #000;
-	border-style: ridge;
+	right:70px;
+	cursor:pointer;
 }

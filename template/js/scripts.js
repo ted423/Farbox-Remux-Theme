@@ -25,18 +25,19 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#switch").click(function () {
         $(".nav").slideToggle("250");
+        $(".infobar").slideToggle("250");
         $("#switch").toggleClass("switch_current");
     });
     $(window).resize(function () {
-        if ($(window).width() > 768){
+        if ($('.logo').width() > 100){
             $(".nav").show();
-            $("#more").show();
+            $(".infobar").show();
         }
     });
     $(window).resize(function () {
-        if ($(window).width() < 768){
+        if ($('.logo').width() < 100){
             $(".nav").hide();
-            $("#more").hide();
+            $(".infobar").hide();
         }
     });
 });
@@ -60,11 +61,11 @@ $(function () {
 
 //code add button
 $(function () {
-    var code = document.querySelectorAll('code,.dp-j');
+    var code = document.querySelectorAll('pre>code,.dp-j');
     [].forEach.call(code,function(unit){
         var btn = document.createElement("span");
         btn.className = 'select-btn'
-        btn.textContent='select';
+        btn.innerHTML= '<i class="fa fa-code"></i>';
         btn.onclick = function(){
             var target =this.nextSibling;
             var range = document.createRange();
@@ -77,5 +78,3 @@ $(function () {
         unit.parentNode.insertBefore(btn,unit);
     })
 });
-
-

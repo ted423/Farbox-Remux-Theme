@@ -1,9 +1,9 @@
 $social-button-size: 50px;
 $nav-button-size: 50px;
 $content-high-color: #1593C9;
-$bg-color: #f6f6f6;
+$bg-color: #F6F6F6;
 $font-color: #333;
-$sidebar-width: 20%;
+$sidebar-width: 23%;
 $font-family: "Microsoft YaHei","Microsoft Jhenghei","Hiragino Sans GB",Verdana,STSong,Simsun,Arial,Helvetica Neue,Helvetica,sans-serif;
 
 
@@ -45,11 +45,7 @@ a {
 #layout {
     padding-left: $sidebar-width; /* "left col (nav + list)" width */
     position: relative;
-    background: #3D4349 none repeat scroll 0% 0%;
 
-    .content_body{
-        background: #F5F5F5 none repeat scroll 0% 0%;
-    }
 }
 
 .sidebar {
@@ -62,6 +58,7 @@ a {
     border-right: 1px solid #eee;
     text-align: center;
     overflow: hidden;
+    background: #3D4349 none repeat scroll 0% 0%;
 
     #avatar {
         margin: 4em auto 1em;
@@ -262,7 +259,6 @@ background:none!important;
     }
 
     .posts{
-        margin-top: -0.7em;
         .post{
             padding: 0.7em 0;
             .title{
@@ -334,6 +330,7 @@ background:none!important;
             margin: .5em 0 .8em;
             line-height: 1.2em;
             padding: 0 1.2em;
+            color: #585858;
 
             a {
                 font-size: 14px;
@@ -488,7 +485,7 @@ background:none!important;
     text-shadow: 0 1px 1px #333;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
 	#switch {
 	    display:none;
 	}
@@ -656,4 +653,3 @@ background:none!important;
     width: 100%;
     margin: 0 auto;
 }
-
