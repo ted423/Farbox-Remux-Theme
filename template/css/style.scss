@@ -36,6 +36,7 @@ b, strong {
 a {
     text-decoration: none;
     color: $content-high-color;
+    word-wrap: break-word;
 }
 
 /* LAYOUT CSS */
@@ -52,7 +53,6 @@ a {
     width: $sidebar-width;
     margin-left: -$sidebar-width;
     background: transparent;
-    border-right: 1px solid #eee;
     text-align: center;
     overflow: hidden;
     background: #3D4349 none repeat scroll 0% 0%;
@@ -261,7 +261,7 @@ a {
         border-top: 1px dotted #ddd;
 
         .title {
-            font-size: 1.8em;
+            font-size: 25px;
             color:#555;
             border-left: 3px solid $content-high-color;
             margin-bottom: .2em;
@@ -531,10 +531,6 @@ a {
     #main {
         padding: 1em;
         
-        .tags{
-            display: none !important;
-        }
-
         a{
             line-height: 2;
         }
@@ -554,6 +550,9 @@ a {
 @media (max-width: 480px) {
     .listing-item .date {
         display: none;
+    }
+    .info{
+      font-size:10px;
     }
     #main .post .title {
         font-size: 1.5em;
@@ -576,6 +575,11 @@ a {
     }
     #main #categories li a {
         padding: 1em;
+    }
+  //个人用
+    .infobox{
+       float:none;
+       margin:0 auto;
     }
 }
 

@@ -1,10 +1,7 @@
 extends base
 {% from "mixins" import make_posts_list %}
 block title
-	if request.path == '/'
-		{{ site.title }}
-	else
-		{{ category.title or 'Categories' }} | {{ site.title }}
+	{{ category.title or 'Categories' }} | {{ site.title }}
 
 block content
 	if request.path == '/' or request.path not in ['/category', '/category/']
