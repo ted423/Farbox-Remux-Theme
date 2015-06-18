@@ -1139,7 +1139,6 @@ table {
 	border: 1px solid #dddddd;
 	border-left: 0;
 	margin: 1em 0;
-	font-size: 13px;
 
 }
 
@@ -1416,7 +1415,6 @@ menu, ol, ul {
 
 .select-btn{
 	font-size:13px;
-	position:absolute;
-	right:70px;
+	float: right;
 	cursor:pointer;
 }

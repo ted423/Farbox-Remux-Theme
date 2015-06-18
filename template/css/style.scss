@@ -238,11 +238,6 @@ a {
         .title {
             padding: 0 0.5em;
         }
-        .info {
-          border-bottom: 1px dotted #ddd;
-          padding: 0 1.2em .8em!important;
-        }
-
     }
 
     .posts{
@@ -281,7 +276,8 @@ a {
         }
 
         .post_body{
-            margin: 1.5em 0;
+            border-top: 1px dotted #ddd;
+            padding: 1.5em 0;
             font-family: $font-family;
 
             h2{
@@ -314,7 +310,7 @@ a {
             font-size: 14px;
             position: relative;
             text-align: left;
-            margin: .5em 0 .8em;
+            margin: .5em 0;
             line-height: 1.2em;
             padding: 0 1.2em;
             color: #585858;
@@ -343,7 +339,7 @@ a {
                 margin-right: .1em;
             }
 
-            .category,.tags, .visitors, .source, .ds-thread-count {
+            .category,.tags-source,.visitors,.source, .ds-thread-count {
                 display: inline-block;
                 margin: 0 .1em;
             }
