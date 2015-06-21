@@ -61,7 +61,7 @@ $(function () {
 
 //code add button
 $(function () {
-    var code = document.querySelectorAll('pre>code,.dp-j');
+    var code = document.querySelectorAll('pre>code');
     [].forEach.call(code,function(unit){
         var btn = document.createElement("span");
         btn.className = 'select-btn'
@@ -76,5 +76,22 @@ $(function () {
             copy.addRange(range);
         }
         unit.parentNode.insertBefore(btn,unit);
+    })
+        var code = document.querySelectorAll('.codehilite pre');
+    [].forEach.call(code,function(unit){
+        var btn = document.createElement("span");
+        btn.className = 'select-btn'
+        btn.innerHTML= '<i class="fa fa-code"></i>';
+        btn.onclick = function(){
+            var target =this.parentNode;
+            var range = document.createRange();
+            var startOffset = 0;
+            range.setStart(target,startOffset);
+            range.setEnd(target,target.childNodes.length);
+            var copy=window.getSelection();
+            copy.addRange(range);
+        }
+        console.log(unit.firstChild);
+        unit.insertBefore(btn,unit.firstChild);
     })
 });
