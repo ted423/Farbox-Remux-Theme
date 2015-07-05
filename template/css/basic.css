@@ -1441,13 +1441,11 @@ ol{
 	display:inline-block;
     counter-reset: li; /* 初始化计数器 */
     list-style: none; /* 移除浏览器默认编号 */
-    padding: 0;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
 
 ol li{
     position: relative;
-    display: block;
     padding: .4em .4em .4em 2em;
     *padding: .4em;
     margin: .5em 0;
