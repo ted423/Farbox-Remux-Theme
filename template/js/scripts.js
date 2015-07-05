@@ -65,7 +65,7 @@ $(function () {
     [].forEach.call(code,function(unit){
         var btn = document.createElement("span");
         btn.className = 'select-btn'
-        btn.innerHTML= '<i class="fa fa-code"></i>';
+        btn.innerHTML= '<i class="fa fa-code" title="点击全选"></i>';
         btn.onclick = function(){
             var target =this.nextSibling;
             var range = document.createRange();
@@ -81,7 +81,7 @@ $(function () {
     [].forEach.call(code,function(unit){
         var btn = document.createElement("span");
         btn.className = 'select-btn'
-        btn.innerHTML= '<i class="fa fa-code"></i>';
+        btn.innerHTML= '<i class="fa fa-code" title="点击全选"></i>';
         btn.onclick = function(){
             var target =this.parentNode;
             var range = document.createRange();
@@ -91,7 +91,7 @@ $(function () {
             var copy=window.getSelection();
             copy.addRange(range);
         }
-        console.log(unit.firstChild);
+        //console.log(unit.firstChild);
         unit.insertBefore(btn,unit.firstChild);
     })
 });

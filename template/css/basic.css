@@ -112,14 +112,6 @@ p,pre{
 	margin:1em 0
 }
 
-
-
-pre{
-	white-space:pre;
-	white-space:pre-wrap;
-	word-wrap:break-word
-}
-
 q{
 	quotes:none
 }
@@ -242,11 +234,6 @@ button::-moz-focus-inner,input::-moz-focus-inner{
 textarea{
 	overflow:auto;
 	vertical-align:top
-}
-
-table{
-	border-collapse:collapse;
-	border-spacing:0
 }
 
 .pure-button{
@@ -1212,11 +1199,12 @@ pre{
 	font-family: monospace,serif;
 	text-shadow:none;
 	line-height: 1.5em;
-	display: block;
+	display: inline-block;
 	overflow: auto;
 	background: #F8F8F8;
 	letter-spacing: 0;
 	font-size: 90%;
+	white-space:normal;
 }
 
 pre p {
@@ -1360,7 +1348,7 @@ menu, ol, ul {
 
 .infobox {
 	border: 1px solid #AAA;
-	width: 22em;
+	width: 20px;
 	background-color: #F9F9F9;
 	text-align: left;
 	color: #000;
@@ -1440,10 +1428,58 @@ menu, ol, ul {
 }
 
 .select-btn{
-	top: -5px;
+	top: -7px;
 	position: relative;
-	left: 5px;
-	font-size:13px;
+	left: 7px;
+	font-size:11px !important;
 	float: right;
 	cursor:pointer;
+}
+
+/*圆角样式*/
+ol{
+	display:inline-block;
+    counter-reset: li; /* 初始化计数器 */
+    list-style: none; /* 移除浏览器默认编号 */
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+ol li{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;	
+}
+
+ol li{
+    background: #eee;
+}
+
+ol li:hover:before{
+    transform: rotate(360deg);	
+}
+
+ol li:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;	
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
 }

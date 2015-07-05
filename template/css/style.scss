@@ -13,10 +13,12 @@ $font-family: "Microsoft YaHei","Microsoft Jhenghei","Hiragino Sans GB",Verdana,
     transition: 0.25s;
 }
 
+
 body {
     font-family: "Microsoft YaHei","Microsoft Jhenghei","Hiragino Sans GB",Verdana,STSong,Simsun,Arial,Helvetica Neue,Helvetica,sans-serif;
     line-height: 1.9;
     -webkit-text-size-adjust: none;
+    overflow-x: hidden;
     margin: 0 auto;
     background: $bg-color;
     color: $font-color;
