@@ -1,6 +1,6 @@
 extends base
 {% from "mixins" import make_posts_list %}
-is_index = request.path.strip('/')=='tag'
+is_index = request.path.strip('/')=='tags'
 
 block title
 	| {{ "Tags" if is_index else tags.join('+') }} | {{ site.title }}
