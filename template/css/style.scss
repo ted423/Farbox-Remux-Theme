@@ -171,7 +171,7 @@ a {
 
     /* for archive and tags*/
     .list_with_title {
-        font-family: 'Microsoft Jhenghei', 'Microsoft Yahei';
+        font-family: Comic Sans MS,"Microsoft Jhenghei";
         padding: 0;
         margin: -30px auto 0 auto;
 
@@ -182,9 +182,8 @@ a {
         }
 
         .listing_title {
-            font-weight: bold;
             line-height: 2.2em;
-            font-size: 1.4em;
+            font-size: 25px;
             text-align: center;
             margin-top: 35px;
             border-bottom: 1px dotted #ddd;
@@ -265,7 +264,7 @@ a {
 
             a {
                 color:#333;
-                padding: 0 0.5em;
+                padding: 3px;
                 @extend .default-transition;
 
                 &:hover{
@@ -574,7 +573,7 @@ a {
     #main #categories li a {
         padding: 1em;
     }
-  //个人用
+  /*个人用*/
     .infobox{
        float:none;
        margin:0 auto;
@@ -615,6 +614,7 @@ a {
     font-size: 1.2em;
     overflow: auto;
     margin-top: 1em;
+    width: 100%;
 
     a {
         color: $content-high-color;

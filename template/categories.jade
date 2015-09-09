@@ -4,19 +4,16 @@ block title
 	{{ category.title or 'Categories' }} | {{ site.title }}
 
 block content
-	if request.path == '/' or request.path not in ['/category', '/category/']
+	if request.path == '/' or request.path not in ['/categories', '/categories/']
 		+make_posts_list()
 	else
 		ul#categories
-			for category in get_data(type='folder', level=1, min_posts_count=1)
+			for category in get_data(type='folder', level=1,min_posts_count=1)
 				li
-					a(href='/category/{{category.path}}')
+					a(href='/categories/{{category.path}}')
 						h3= category.title
 						span
 							if lang == 'zh_cn'
 								| {{ category.posts_count }} 篇文章
 							else
 								| {{ category.posts_count }} posts
-
-
-

@@ -35,9 +35,9 @@ html(lang="zh-cn")
 				ul.nav
 					if has('about.md')
 						li= a_with_selected('/about.md', '关于' if lang=='zh_cn' else 'About')
-					li= a_with_selected('/category', '分类' if lang=='zh_cn' else 'Categories')
+					li= a_with_selected('/categories', '分类' if lang=='zh_cn' else 'Categories')
 					if site.tags
-						li= a_with_selected('/tags', '标签' if lang=='zh_cn' else 'Tags')
+						li= a_with_selected('/tag', '标签' if lang=='zh_cn' else 'Tags')
 					li= a_with_selected('/archive', '归档' if lang=='zh_cn' else 'Archive')
 					li#search
 					 	a(href="#")= '搜索' if lang=='zh_cn' else 'Search'
@@ -64,10 +64,12 @@ html(lang="zh-cn")
 			.content_body.pure-u-1
 				#main
 					block content
+				#go-top
+					a(href="javascript:void(0);",onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;")
+						i(class="fa fa-arrow-up")
 				#footer
 					| Powered by
 					a(href='http://www.farbox.com') FarBox&nbsp;
 					|
 					span= "友情链接:"
-					a(href="")= ""
 		load("/template/js/scripts.js")

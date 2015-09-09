@@ -33,7 +33,7 @@ mixin make_posts_list(_posts=None)
 						category_path = path_parts[1]
 						span.category
 							i.fa.fa-list &nbsp;
-							a(href="/category/{{category_path}}")= category_path
+							a(href="/categories/{{category_path}}")= category_path
 							|
 					if post.tags
 						span.tags

@@ -721,7 +721,6 @@ textarea{
 
 .pure-g-r{
 	*word-spacing:-.43em;
-	font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;
 	display:-webkit-flex;
 	-webkit-flex-flow:row wrap;
 	display:-ms-flexbox;
@@ -760,14 +759,18 @@ textarea{
 	.pure-g-r>.pure-u,.pure-g-r>[class *="pure-u-"]{
 		width:100%
 	}
-
+    pre{
+		width: 100%;
+	}
 }
 
 @media (max-width:767px){
 	.pure-g-r>.pure-u,.pure-g-r>[class *="pure-u-"]{
 		width:100%
 	}
-
+      pre{
+		width: 100%;
+	}
 	.pure-hidden-phone{
 		display:none
 	}
@@ -1188,6 +1191,7 @@ th, td {
 }
 th {
 	text-align:center;
+	font-family: "Microsoft Jhenghei","Hiragino Sans GB",Verdana,STSong,Simsun,Arial,Helvetica Neue,Helvetica,sans-serif;
 }
 .p_part {
 	margin: 15px 0;
@@ -1195,7 +1199,7 @@ th {
 
 pre{
 	border: 1px solid #e0e0e0;
-	padding: 5px 15px;
+	padding: 8px 13px;
 	font-family: monospace,serif;
 	text-shadow:none;
 	line-height: 1.5em;
@@ -1204,7 +1208,8 @@ pre{
 	background: #F8F8F8;
 	letter-spacing: 0;
 	font-size: 90%;
-	white-space:normal;
+	overflow: auto;
+	white-space: pre;
 }
 
 pre p {
@@ -1223,7 +1228,7 @@ pre code{
 	font-size: 100%;
 }
 p {
-	margin-bottom: 0px !important;
+	margin-bottom: 5px !important;
 	margin-top: 0px;
 	word-wrap: break-word;
 }
@@ -1348,7 +1353,6 @@ menu, ol, ul {
 
 .infobox {
 	border: 1px solid #AAA;
-	width: 20px;
 	background-color: #F9F9F9;
 	text-align: left;
 	color: #000;
@@ -1428,43 +1432,54 @@ menu, ol, ul {
 }
 
 .select-btn{
-	top: -7px;
+	top: -4px;
 	position: relative;
-	left: 7px;
+	left: 4px;
 	font-size:11px !important;
 	float: right;
 	cursor:pointer;
 }
 
-/*圆角样式*/
+/*圆角有序列表样式*/
 ol{
 	display:inline-block;
     counter-reset: li; /* 初始化计数器 */
     list-style: none; /* 移除浏览器默认编号 */
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    padding-bottom: 10px;
+    font-size: 14px;
 }
 
-ol li{
+ol ol{
+	padding-bottom: 0px;
+}
+
+ol ol>li:first-of-type>p{
+	margin-top: 0px !important;
+}
+
+ol ol>li:last-of-type>p{
+	margin-bottom: 0px !important;
+}
+
+ol>li>p:first-of-type,ol>li>a:first-of-type{
     position: relative;
-    padding: .4em .4em .4em 2em;
+    padding: .4em 1em .4em 2em;
     *padding: .4em;
+    min-height: 31px;
     margin: .5em 0;
-    background: #ddd;
     color: #444;
+    background:#eee;
     text-decoration: none;
     border-radius: .3em;
     transition: all .3s ease-out;	
 }
 
-ol li{
-    background: #eee;
-}
-
-ol li:hover:before{
+ol>li>p:first-of-type:hover:before,ol>li>a:first-of-type:hover:before{
     transform: rotate(360deg);	
 }
 
-ol li:before{
+ol>li>p:first-of-type:before,ol>li>a:first-of-type:before{
     content: counter(li);
     counter-increment: li;
     position: absolute;	
@@ -1480,4 +1495,15 @@ ol li:before{
     font-weight: bold;
     border-radius: 2em;
     transition: all .3s ease-out;
+}
+
+/*go-top*/
+#go-top{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+#go-top>a{
+  opacity:0.5;
+  color:#444;
 }
