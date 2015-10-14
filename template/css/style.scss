@@ -409,10 +409,11 @@ a {
             width: 20%;
 
             h3 {
-                font-size: 1.3em;
+                font-size: 2.7vmin;
                 word-wrap: break-word;
                 overflow: hidden;
                 font-weight: normal;
+                margin: 3vh 0px;
             }
 
             span {
@@ -470,7 +471,11 @@ a {
     color: #fff;
     text-shadow: 0 1px 1px #333;
 }
-
+@media (max-width: 1000px) {
+	#main #categories li{
+		width:28%
+	}
+}
 @media (min-width: 768px) {
 	#switch {
 	    display:none;
@@ -527,8 +532,9 @@ a {
         padding: 0;
     }
     #main {
-        padding: 1em;
-        
+        #categories li h3{
+        	font-size: 25px;
+        }
         a{
             line-height: 2;
         }
@@ -570,9 +576,9 @@ a {
         float: none;
         width: 100%;
         margin: 1em 0;
-    }
-    #main #categories li a {
-        padding: 1em;
+        a {
+        	padding: 1em;
+        }
     }
   /*个人用*/
     .infobox{
