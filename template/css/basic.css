@@ -1462,7 +1462,7 @@ ol ol>li:last-of-type>p{
 	margin-bottom: 0px !important;
 }
 
-ol>li>p:first-of-type,ol>li>a:first-of-type{
+ol>li>p:first-of-type{
     position: relative;
     padding: .4em 1em .4em 2em;
     *padding: .4em;
@@ -1475,11 +1475,11 @@ ol>li>p:first-of-type,ol>li>a:first-of-type{
     transition: all .3s ease-out;	
 }
 
-ol>li>p:first-of-type:hover:before,ol>li>a:first-of-type:hover:before{
+ol>li>p:first-of-type:hover:before{
     transform: rotate(360deg);	
 }
 
-ol>li>p:first-of-type:before,ol>li>a:first-of-type:before{
+ol>li>p:first-of-type:before{
     content: counter(li);
     counter-increment: li;
     position: absolute;	

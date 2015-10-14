@@ -165,9 +165,8 @@ a {
 
 
 #main {
-    padding: 3.5em;
-    margin-bottom: 2em;
-    min-height: 768px;
+    padding:3vh 3vw;
+    min-height:90vh;
 
     /* for archive and tags*/
     .list_with_title {
@@ -444,7 +443,9 @@ a {
 
 }
 
-
+#footer{
+    height:10vh;
+}
 
 #fb_new_comment {
     input {

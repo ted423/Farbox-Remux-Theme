@@ -19,7 +19,6 @@ function displayFix(){
 				temp=unit.getClientRects()[i].width/10;
 				if (temp>length)length=temp;
 			}
-			console.log(length);
 			unit.textContent=unit.href.slice(0,length)+'...';
 		}
 		else if (unit.textContent.substr(-3).indexOf('...')!=-1&&(unit.textContent.indexOf('https://')!=-1||unit.textContent.indexOf('http://')!=-1||unit.textContent.indexOf('ed2k://')!=-1||unit.textContent.indexOf('magnet:?xt=urn:btih:')!=-1)){
@@ -33,8 +32,15 @@ function displayFix(){
 					temp=unit.getClientRects()[i].width/10;
 					if (temp>length)length=temp;
 				}
-				console.log(length);
-				unit.textContent=unit.href.slice(0,length)+'...';
+				//由于取href的值，需要重新编码
+				var a=unit.href.split(/%(?![A-Fa-f0-9]{2})/);
+				var tempS="";
+				for(i=0;i<a.length;i++){
+					tempS+=(decodeURIComponent(a[i]));
+					if(i!=a.length-1)
+						tempS+="%";
+				}
+				unit.textContent=tempS.slice(0,length)+'...';
 			}
 		}
 	})
@@ -151,8 +157,9 @@ $(function () {
 	[].forEach.call(lis,function(li){
 		if(li.firstChild.nodeName=="#text"){
 			p=document.createElement('p');
-			p.textContent=li.firstChild.textContent;
-			li.firstChild.remove();
+			p.innerHTML=li.innerHTML;
+			while(li.childNodes.length!=0)
+				li.childNodes[0].remove();
 			if(li.firstChild){li.insertBefore(p,li.firstChild)}
 				else li.appendChild(p);
 		}
