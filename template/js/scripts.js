@@ -155,15 +155,17 @@ $(function () {
 	//ol fix
 	lis=document.querySelectorAll('ol>li');
 	[].forEach.call(lis,function(li){
-		if(li.firstChild.nodeName=="#text"){
+		if(li.firstChild.nodeName=="#text"||getComputedStyle(li.firstChild).display=="inline"){
 			p=document.createElement('p');
-			p.innerHTML=li.innerHTML;
-			while(li.childNodes.length!=0)
-				li.childNodes[0].remove();
-			if(li.firstChild){li.insertBefore(p,li.firstChild)}
-				else li.appendChild(p);
+			if(li.firstChild.nodeName=="#text")p.innerHTML=li.firstChild.textContent;
+			else p.innerHTML=li.firstChild.outerHTML;
+			li.childNodes[0].remove();
+			if(li.firstChild){
+				li.insertBefore(p,li.firstChild)
+			}
+			else li.appendChild(p);
 		}
-		else if (li.firstChild.nodeName!="P"){
+		else if (li.firstChild.nodeName!="P"&&getComputedStyle(li.firstChild).display=="block"){
 			p=document.createElement('p');
 			if(li.firstChild){li.insertBefore(p,li.firstChild)}
 		}

@@ -731,10 +731,6 @@ textarea{
 	word-spacing:-.43em
 }
 
-.pure-g-r [class *="pure-u"]{
-	font-family:sans-serif
-}
-
 .pure-g-r img{
 	max-width:100%;
 	height:auto
@@ -1207,7 +1203,7 @@ pre{
 	overflow: auto;
 	background: #F8F8F8;
 	letter-spacing: 0;
-	font-size: 90%;
+	font-size: 15px;
 	overflow: auto;
 	white-space: pre;
 }
@@ -1231,6 +1227,7 @@ p {
 	margin-bottom: 5px !important;
 	margin-top: 0px;
 	word-wrap: break-word;
+	font-size: 16px;
 }
 
 .p {
@@ -1442,7 +1439,6 @@ menu, ol, ul {
 
 /*圆角有序列表样式*/
 ol{
-	display:inline-block;
     counter-reset: li; /* 初始化计数器 */
     list-style: none; /* 移除浏览器默认编号 */
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -1464,7 +1460,7 @@ ol ol>li:last-of-type>p{
 
 ol>li>p:first-of-type{
     position: relative;
-    padding: .4em 1em .4em 2em;
+    padding: .2em 1.3em;
     *padding: .4em;
     min-height: 31px;
     margin: .5em 0;
