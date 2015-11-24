@@ -1,6 +1,8 @@
 html(lang="zh-cn")
 	head
-		meta(http-equiv="content-type", content="text/html; charset=utf-8")
+		load("/template/js/redirect.js")
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=Edge")
 		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
 		meta(content="yes", name="apple-mobile-web-app-capable")
 		meta(content="black-translucent", name="apple-mobile-web-app-status-bar-style")
@@ -10,18 +12,14 @@ html(lang="zh-cn")
 		load("/template/js/redirect.js")
 		load('fonts')
 		link(rel='alternate', type='application/rss+xml', title='atom 1.0', href='/feed')
-		load("jquery#1.10.2, /template/css/basic.css, /template/css/style.scss")
+		load("jquery#2.1.4, /template/css/style.scss, /template/css/basic.css")
 
 		if not has('favicon.icon')
 			link(rel="shortcut icon", href="/template/favicon.ico")
 
-		if 'webscan.360' in request.path
-			+raise_404()
-
 		title
 			block title
 				site.title
-
 	body
 		#layout.pure-g-r
 			.sidebar.pure-u
@@ -29,7 +27,7 @@ html(lang="zh-cn")
 					a(href="/")
 						img.logo(src="{{site.avatar}}?width=240&height=240&fixed=true", alt=site.title, title="Homepage")
 				h1.site_name
-					a(href="/")= "Take&Give"
+					a(href="/")= "{{site.title}}"
 				#switch
 					img(src="/template/img/menu.png", alt="menu icon")
 				ul.nav
@@ -42,9 +40,14 @@ html(lang="zh-cn")
 					li#search
 					 	a(href="#")= '搜索' if lang=='zh_cn' else 'Search'
 				.search-bar
-					input#search-bar(type='text', value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
-					a(href="javascript:search()")
-						img(src="/template/img/search.png", alt="search icon")
+					form#cse-search-box(type='text', action="//www.google.com.hk",target="_blank")
+						div
+							input(type="hidden", name="cx", value="partner-pub-7159569587933519:7038413786")
+							input(type="hidden", name="ie", value="UTF-8")
+							input#search-bar(type="text", name="q", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+							a(href="javascript:search()")
+								<i class="fa fa-search"></i>
+							input(type="submit", class="fa fa-google", name="sa", value="", title="Google站内")
 				.infobar
 					ul#bar.baro
 						li.bar
@@ -54,12 +57,8 @@ html(lang="zh-cn")
 							a(href='/post/code/github',title="Github") 
 								i(class="fa fa-github")
 						li.bar
-							a(href='https://www.google.com/cse/publicurl?cx=014866320412706777795:ebcdms16iuc',title='Google站内') 
-								i(class="fa fa-google")
-						li.bar
 							a(href='/feed',title='RSS') 
 								i(class="fa fa-rss")
-
 
 			.content_body.pure-u-1
 				#main

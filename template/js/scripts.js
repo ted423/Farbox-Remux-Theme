@@ -8,48 +8,62 @@ function search() {
 	}
 }
 
-function displayFix(){
-	a=document.getElementsByTagName('a');
-	[].forEach.call(a,function(unit){
-		if(unit.getClientRects()[1]&&(unit.textContent.indexOf('https://')!=-1||unit.textContent.indexOf('http://')!=-1||unit.textContent.indexOf('ed2k://')!=-1||unit.textContent.indexOf('magnet:?xt=urn:btih:')!=-1)&&unit.textContent.length>30){
-			length=unit.getClientRects()[0].width/10;
-			max=unit.getClientRects().length;
+function displayFix(){//判断链接是否超出一行，是的话调整为1行
+	$("a").each(function(){
+		var reg =/((https?)|(ed2k):\/\/)|(magnet\:\?xt\=urn\:btih\:)/i;
+		if(this.getClientRects()[1]&&reg.test(this.textContent)){
+			length=this.getClientRects()[0].width/11;
+			max=this.getClientRects().length;
 			for(i=1;i<max;i++)
 			{
-				temp=unit.getClientRects()[i].width/10;
+				temp=this.getClientRects()[i].width/11;
 				if (temp>length)length=temp;
 			}
-			unit.textContent=unit.href.slice(0,length)+'...';
-		}
-		else if (unit.textContent.substr(-3).indexOf('...')!=-1&&(unit.textContent.indexOf('https://')!=-1||unit.textContent.indexOf('http://')!=-1||unit.textContent.indexOf('ed2k://')!=-1||unit.textContent.indexOf('magnet:?xt=urn:btih:')!=-1)){
-			unit.textContent=unit.href;
-			if(unit.getClientRects()[1]&&(unit.textContent.indexOf('https://')!=-1||unit.textContent.indexOf('http://')!=-1||unit.textContent.indexOf('ed2k://')!=-1||unit.textContent.indexOf('magnet:?xt=urn:btih:')!=-1)&&unit.textContent.length>30)
-			{
-				length=unit.getClientRects()[0].width/10;
-				max=unit.getClientRects().length;
-				for(i=1;i<max;i++)
-				{
-					temp=unit.getClientRects()[i].width/10;
-					if (temp>length)length=temp;
-				}
-				//由于取href的值，需要重新编码
-				var a=unit.href.split(/%(?![A-Fa-f0-9]{2})/);
+			//由于取href的值，需要重新编码
+				var a=this.href.split(/%(?![A-Fa-f0-9]{2})/);
 				var tempS="";
 				for(i=0;i<a.length;i++){
 					tempS+=(decodeURIComponent(a[i]));
 					if(i!=a.length-1)
 						tempS+="%";
 				}
-				unit.textContent=tempS.slice(0,length)+'...';
+				this.textContent=tempS.slice(0,length)+'...';
+			}
+		else if (this.textContent.substr(-3).indexOf('...')!=-1&&reg.test(this.textContent)){//先还原，然后再次调整
+			//由于取href的值，需要重新编码
+			var array=this.href.split(/%(?![A-Fa-f0-9]{2})/);
+			var tempS="";
+			for(i=0;i<array.length;i++){
+				tempS+=(decodeURIComponent(array[i]));
+				if(i!=array.length-1)
+					tempS+="%";
+			}
+			this.textContent=tempS;
+			if(this.getClientRects()[1]&&reg.test(this.textContent))
+			{
+				length=this.getClientRects()[0].width/11;
+				max=this.getClientRects().length;
+				for(i=1;i<max;i++)
+				{
+					temp=this.getClientRects()[i].width/11;
+					if (temp>length)length=temp;
+				}
+				//由于取href的值，需要重新编码
+				var a=this.href.split(/%(?![A-Fa-f0-9]{2})/);
+				var tempS="";
+				for(i=0;i<a.length;i++){
+					tempS+=(decodeURIComponent(a[i]));
+					if(i!=a.length-1)
+						tempS+="%";
+				}
+				this.textContent=tempS.slice(0,length)+'...';
 			}
 		}
 	})
-	pre=document.getElementsByTagName('pre');
-
-	[].forEach.call(pre,function(unit){
-		if(window.outerHeight >= screen.availHeight&&window.outerWidth >= screen.availWidth/*FF、IE下会大16*/)unit.style.width="";
-		if(unit.getClientRects()[0].width>document.getElementsByClassName('post')[0].getClientRects()[0].width){
-			unit.style.width="100%";
+	$('pre').each(function(){
+		if(window.outerHeight >= screen.availHeight&&window.outerWidth >= screen.availWidth/*FF、IE下会大16*/)this.style.width="";
+		if(this.getClientRects()[0].width>document.getElementsByClassName('post')[0].getClientRects()[0].width){
+			this.style.width="100%";
 
 		}
 	})
@@ -109,37 +123,19 @@ $(function () {
 
 $(function () {
 	//code add button
-	var code = document.querySelectorAll('pre>code');
-	[].forEach.call(code,function(unit){
+	$('pre>code,.codehilite pre').each(function(){
 		var btn = document.createElement("span");
 		btn.className = 'select-btn'
 		btn.innerHTML= '<i class="fa fa-code" title="点击全选"></i>';
 		btn.onclick = function(){
-			var target =this.nextSibling;
+			var target =this.previousSibling;
 			var range = document.createRange();
-			var startOffset = 0;
-			range.setStart(target,startOffset);
+			range.setStart(target,0);
 			range.setEnd(target,target.childNodes.length);
-			var copy=window.getSelection();
-			copy.addRange(range);
+			document.getSelection().removeAllRanges();
+			document.getSelection().addRange(range);
 		}
-		unit.parentNode.insertBefore(btn,unit);
-	})
-	var code = document.querySelectorAll('.codehilite pre');
-	[].forEach.call(code,function(unit){
-		var btn = document.createElement("span");
-		btn.className = 'select-btn'
-		btn.innerHTML= '<i class="fa fa-code" title="点击全选"></i>';
-		btn.onclick = function(){
-			var target =this.parentNode;
-			var range = document.createRange();
-			var startOffset = 0;
-			range.setStart(target,startOffset);
-			range.setEnd(target,target.childNodes.length);
-			var copy=window.getSelection();
-			copy.addRange(range);
-		}
-		unit.insertBefore(btn,unit.firstChild);
+		$(btn).insertAfter(this);
 	})
 });
 
@@ -147,10 +143,7 @@ $(function () {
 
 (function(){
 	//add onedrive notice
-	var a =document.querySelectorAll("a[href*='https://onedrive.live.com']");
-	[].forEach.call(a,function(each){
-		each.setAttribute('title','可能需要使用host才能正常访问');
-	})
+	$("a[href*='https://onedrive.live.com']").attr('title','可能需要使用host才能正常访问');
 
 	//ol fix
 	lis=document.querySelectorAll('ol>li');
@@ -159,7 +152,7 @@ $(function () {
 			p=document.createElement('p');
 			if(li.firstChild.nodeName=="#text")p.innerHTML=li.firstChild.textContent;
 			else p.innerHTML=li.firstChild.outerHTML;
-			li.childNodes[0].remove();
+			$(li.childNodes[0]).remove();
 			if(li.firstChild){
 				li.insertBefore(p,li.firstChild)
 			}
@@ -169,8 +162,14 @@ $(function () {
 			p=document.createElement('p');
 			if(li.firstChild){li.insertBefore(p,li.firstChild)}
 		}
-})
-	displayFix();
+	})
+	$('li>code').each(function(){
+		if($(this).text().substring(0,1)=="\n"){
+			pre=document.createElement("pre");
+			pre.innerHTML="<code>"+this.innerHTML.substring(1)+"</code>"
+			$(this).replaceWith(pre);
+		}
+	});
 })();
 
 window.onload=displayFix();
