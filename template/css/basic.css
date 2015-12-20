@@ -566,6 +566,8 @@ dl, menu, ol, ul{
 	border-bottom: 1px dotted #DDD;
 	padding-left: 10px;
 }
+#search-bar{width: 50%;}
+
 .baro, .bar {
 	display: block;
 	list-style: none outside none;
@@ -619,7 +621,7 @@ dl, menu, ol, ul{
 	opacity:0.2; 
 	box-shadow: 5px 5px 5px #888888;
 }
-#cse-search-box>div .fa{
+.search-bar .fa{
 	background: none;
 	border: none;
 	font-size: 27px;
@@ -628,8 +630,8 @@ dl, menu, ol, ul{
 	color: #333;
 }
 
-input.fa.fa-google{
-	padding-top: 5px !important;
+a.fa.fa-google{
+	margin-top: 5px !important;
 	padding-left:0px !important;
 }
 

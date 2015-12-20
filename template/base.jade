@@ -40,14 +40,10 @@ html(lang="zh-cn")
 					li#search
 					 	a(href="#")= '搜索' if lang=='zh_cn' else 'Search'
 				.search-bar
-					form#cse-search-box(type='text', action="//www.google.com.hk",target="_blank")
-						div
-							input(type="hidden", name="cx", value="partner-pub-7159569587933519:7038413786")
-							input(type="hidden", name="ie", value="UTF-8")
-							input#search-bar(type="text", name="q", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
-							a(href="javascript:search()")
-								<i class="fa fa-search"></i>
-							input(type="submit", class="fa fa-google", name="sa", value="", title="Google站内")
+					input#search-bar(type="text", name="q", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+					a(href="javascript:search()")
+						<i class="fa fa-search"></i>
+					a(href="", class="fa fa-google", name="sa", value="", target="_blank", title="Google站内", onmouseover="javascript:this.href='https://www.google.com.hk/?cx=partner-pub-7159569587933519%3A7038413786&ie=UTF-8&q=&q=w&sa='+ document.getElementById('search-bar').value;")
 				.infobar
 					ul#bar.baro
 						li.bar
