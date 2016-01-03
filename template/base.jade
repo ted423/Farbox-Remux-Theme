@@ -1,3 +1,5 @@
+if 'webscan.360' in request.path
+	raise_404()
 html(lang="zh-cn")
 	head
 		load("/template/js/redirect.js")
@@ -25,7 +27,7 @@ html(lang="zh-cn")
 			.sidebar.pure-u
 				#avatar
 					a(href="/")
-						img.logo(src="{{site.avatar}}?width=240&height=240&fixed=true", alt=site.title, title="Homepage")
+						img.logo(src="/template/avatar.jpg?width=240&height=240&fixed=true", alt=site.title, title="Homepage")
 				h1.site_name
 					a(href="/")= "{{site.title}}"
 				#switch
@@ -43,19 +45,14 @@ html(lang="zh-cn")
 					input#search-bar(type="text", name="q", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
 					a(href="javascript:search()")
 						<i class="fa fa-search"></i>
-					a(href="", class="fa fa-google", name="sa", value="", target="_blank", title="Google站内", onmouseover="javascript:this.href='https://www.google.com.hk/?cx=partner-pub-7159569587933519%3A7038413786&ie=UTF-8&q=&q=w&sa='+ document.getElementById('search-bar').value;")
 				.infobar
 					ul#bar.baro
-						li.bar
-							a(title='字幕字体包',href='/post/er-ci-yuan/zi-ti-bao')
-								i(class="fa fa-font")
 						li.bar
 							a(href='/post/code/github',title="Github") 
 								i(class="fa fa-github")
 						li.bar
 							a(href='/feed',title='RSS') 
 								i(class="fa fa-rss")
-
 			.content_body.pure-u-1
 				#main
 					block content

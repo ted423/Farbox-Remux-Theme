@@ -61,26 +61,6 @@ h2{
 	margin:.83em 0
 }
 
-h3{
-	font-size:1.17em;
-	margin:1em 0
-}
-
-h4{
-	font-size:1em;
-	margin:1.33em 0
-}
-
-h5{
-	font-size:.83em;
-	margin:1.67em 0
-}
-
-h6{
-	font-size:.67em;
-	margin:2.33em 0
-}
-
 abbr[title]{
 	border-bottom:1px dotted
 }
@@ -360,7 +340,7 @@ td ul{
 }
 
 .post_body h1,.post_body h2,.post_body h3,.post_body h4{
-	font-family: Comic Sans MS,"Microsoft Jhenghei";
+	font-family: Comic Sans MS,"Microsoft YaHei";
 	border-left:2px solid  #777;
 	font-weight:normal;
 	padding-left: 5px;
@@ -397,7 +377,7 @@ th, td {
 }
 th {
 	text-align:center;
-	font-family: "Microsoft Jhenghei","Hiragino Sans GB",Verdana,STSong,Simsun,Arial,Helvetica Neue,Helvetica,sans-serif;
+	font-family: "Microsoft YaHei","Hiragino Sans GB",Verdana,STSong,Simsun,Arial,Helvetica Neue,Helvetica,sans-serif;
 }
 .p_part {
 	margin: 15px 0;
@@ -541,7 +521,7 @@ dl, menu, ol, ul{
 
 #categories{
 	/*处理chrome的问题*/
-	font-family: Comic Sans MS,"Microsoft Jhenghei";
+	font-family: Comic Sans MS,"Microsoft YaHei";
 }
 
 .infobox {
@@ -671,7 +651,7 @@ ol ol>li:last-of-type>p{
 	margin-bottom: 0px !important;
 }
 
-ol>li>p:first-of-type{
+ol>li>p:first-child,ol>li>h6{
     position: relative;
     padding: .2em 1.3em;
     *padding: .4em;
@@ -684,11 +664,11 @@ ol>li>p:first-of-type{
     transition: all .3s ease-out;	
 }
 
-ol>li>p:first-of-type:hover:before{
+ol>li>p:first-child:hover:before,ol>li>h6:hover:before{
     transform: rotate(360deg);	
 }
 
-ol>li>p:first-of-type:before{
+ol>li>p:first-child:before,ol>li>h6:before{
     content: counter(li);
     counter-increment: li;
     position: absolute;	
@@ -704,6 +684,11 @@ ol>li>p:first-of-type:before{
     font-weight: bold;
     border-radius: 2em;
     transition: all .3s ease-out;
+}
+
+ol>li>h6{	
+	font-size:16px;
+	margin: 0px;
 }
 
 /*go-top*/

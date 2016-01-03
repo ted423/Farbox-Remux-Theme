@@ -34,7 +34,6 @@ block content
 					a(class="edit",href="?action=edit",target="_blank")= '编辑' if lang=='zh_cn' else 'Edit'
 		.post_body= post.content
 
-
 		.other_posts.pager
 			pre_one = get_connected_one(post, position='<')
 			next_one = get_connected_one(post, position='>')

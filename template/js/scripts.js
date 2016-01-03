@@ -1,7 +1,7 @@
 /* search function */
 function search() {
 	if (document.getElementById('search-bar').value) {
-		location.href = 'http://' + location.host + '?s=' + document.getElementById('search-bar').value
+		location.href = '//' + location.host + '?s=' + document.getElementById('search-bar').value
 	}
 	else {
 		return false;
@@ -103,7 +103,6 @@ $(document).ready(function () {
 	});
 });
 
-
 /* smooth scroll */
 $(function () {
 	$('a[href*=#]:not([href=#])').click(function () {
@@ -119,7 +118,6 @@ $(function () {
 		}
 	});
 });
-
 
 $(function () {
 	//code add button
@@ -139,11 +137,11 @@ $(function () {
 	})
 });
 
-
-
 (function(){
 	//add onedrive notice
 	$("a[href*='https://onedrive.live.com']").attr('title','可能需要使用host才能正常访问');
+	//ed2k UTF-8再编码
+	$("a[href*='ed2k://']").each(function(){this.href=decodeURIComponent(this.href)});
 
 	//ol fix
 	lis=document.querySelectorAll('ol>li');
@@ -158,7 +156,7 @@ $(function () {
 			}
 			else li.appendChild(p);
 		}
-		else if (li.firstChild.nodeName!="P"&&getComputedStyle(li.firstChild).display=="block"){
+		else if (li.firstChild.nodeName!="P"&&li.firstChild.nodeName!="H6"&&getComputedStyle(li.firstChild).display=="block"){
 			p=document.createElement('p');
 			if(li.firstChild){li.insertBefore(p,li.firstChild)}
 		}
