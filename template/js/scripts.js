@@ -148,7 +148,15 @@ $(function () {
 	[].forEach.call(lis,function(li){
 		if(li.firstChild.nodeName=="#text"||getComputedStyle(li.firstChild).display=="inline"){
 			p=document.createElement('p');
-			if(li.firstChild.nodeName=="#text")p.innerHTML=li.firstChild.textContent;
+			if(li.firstChild.nodeName=="#text"){
+				that = li.firstChild;
+				p.innerHTML=that.textContent;
+				while(that.nextSibling&&(that.nextSibling.nodeName=="#text"||getComputedStyle(that.nextSibling).display=="inline")){//处理文字+inline元素的情况
+					if(that.nextSibling.nodeName=="#text") p.innerHTML+=that.nextSibling.textContent;
+					else p.innerHTML+=that.nextSibling.outerHTML;
+					$(that.nextSibling).remove();
+				}
+			}
 			else p.innerHTML=li.firstChild.outerHTML;
 			$(li.childNodes[0]).remove();
 			if(li.firstChild){
