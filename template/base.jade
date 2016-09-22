@@ -1,18 +1,18 @@
-if 'webscan.360' in request.path
-	raise_404()
 html(lang="zh-cn")
+	+i18n('Home', '首页', 'zh_cn')
+	+i18n('Albums', '相册', 'zh_cn')
+	+i18n('Categories', '分类', 'zh_cn')
+	+i18n('Archive', '归档', 'zh_cn')
+	+i18n('Tags', '标签', 'zh_cn')
+	+i18n('About', '关于', 'zh_cn')
+	+i18n('Links', '友链', 'zh_cn')
+	+i18n('Search', '搜索', 'zh_cn')
 	head
 		load("/template/js/redirect.js")
-		meta(charset="UTF-8")
-		meta(http-equiv="X-UA-Compatible", content="IE=Edge")
-		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
-		meta(content="yes", name="apple-mobile-web-app-capable")
-		meta(content="black-translucent", name="apple-mobile-web-app-status-bar-style")
-		meta(content="telephone=no", name="format-detection")
+		+mobile_meta()
 		meta(name="description", content="")
 		meta(name="keywords", content="")
-		load("/template/js/redirect.js")
-		load('fonts')
+		load('fonts#4.5.0')
 		link(rel='alternate', type='application/rss+xml', title='atom 1.0', href='/feed')
 		load("jquery#2.1.4, /template/css/style.scss, /template/css/basic.css")
 
@@ -26,34 +26,46 @@ html(lang="zh-cn")
 		#layout.pure-g-r
 			.sidebar.pure-u
 				#avatar
-					a(href="/")
+					a(href="/", hreflang="zh")
 						img.logo(src="/template/avatar.jpg?width=240&height=240&fixed=true", alt=site.title, title="Homepage")
 				h1.site_name
-					a(href="/")= "{{site.title}}"
+					a(href="/")= site.title
 				#switch
 					img(src="/template/img/menu.png", alt="menu icon")
 				ul.nav
 					if has('about.md')
-						li= a_with_selected('/about.md', '关于' if lang=='zh_cn' else 'About')
-					li= a_with_selected('/categories', '分类' if lang=='zh_cn' else 'Categories')
+						li
+							a(href='/about')=_('About')
+					li
+						a(href='/categories')=_('Categories')
 					if site.tags
-						li= a_with_selected('/tag', '标签' if lang=='zh_cn' else 'Tags')
-					li= a_with_selected('/archive', '归档' if lang=='zh_cn' else 'Archive')
+						li
+							a(href='/tag')=_('Tags')
+					li
+						a(href='/archive')=_('Archive')
 					li#search
-					 	a(href="#")= '搜索' if lang=='zh_cn' else 'Search'
+					 	a(href="#")= _('Search')
 				.search-bar
 					input#search-bar(type="text", name="q", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
-					a(href="javascript:search()")
-						<i class="fa fa-search"></i>
+					a(class="fa fa-search", href="javascript:search()")
 				.infobar
 					ul#bar.baro
 						li.bar
-							a(href='/post/code/github',title="Github") 
+							a(href='https://github.com/',title="Github") 
 								i(class="fa fa-github")
+						li.bar
+							a(href='http://steamcommunity.com/',title="Steam") 
+								i(class="fa fa-steam-square")
 						li.bar
 							a(href='/feed',title='RSS') 
 								i(class="fa fa-rss")
 			.content_body.pure-u-1
+				if request.is_login == false
+					#login
+						a(class="fa fa-power-off", href="/login")
+				if request.is_login == true
+					#login
+						a(class="fa fa-power-off", href="/logout")
 				#main
 					block content
 				#go-top

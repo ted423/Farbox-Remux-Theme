@@ -147,15 +147,12 @@ a {
 			opacity: .8;
 		}
 
-		a {
-			padding: 5px;
-			&:hover {
+		a :hover {
 				text-decoration: none;
 				color: #fff;
 
 			}
-		}
-
+			
 		img {
 			vertical-align: middle;
 			padding-left: .2em;
@@ -478,10 +475,10 @@ a {
 	}
 	.post_body>ul{max-width: 100% !important;}
 }
-@media (min-width: 768px) {#switch {display:none;}}
+@media (min-width: 1000px) {#switch{display:none;}}
 
-@media (max-width: 768px) {
-
+@media (max-width: 1000px) {
+	#login{display:none;}
 	.sidebar {
 		width: 100%;
 		position: relative;

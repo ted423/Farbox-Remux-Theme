@@ -1,10 +1,7 @@
 /* search function */
 function search() {
-	if (document.getElementById('search-bar').value) {
-		location.href = '//' + location.host + '?s=' + document.getElementById('search-bar').value
-	} else {
-		return false;
-	}
+	if (document.getElementById('search-bar').value) location.href = '//' + location.host + '?s=' + document.getElementById('search-bar').value;
+	else return false;
 }
 
 function displayFix() { //判断链接是否超出一行，是的话调整为1行
@@ -133,38 +130,35 @@ $(function() {
 });
 
 (function() {
-		//add onedrive notice
-		$("a[href*='https://onedrive.live.com']").attr('title', '可能需要使用host才能正常访问');
-		//ed2k UTF-8再编码
-		$("a[href*='ed2k://']").each(function() {
-			this.href = decodeURIComponent(this.href)
-		});
+	//add onedrive notice
+	$("a[href*='https://onedrive.live.com']").attr('title', '可能需要使用host才能正常访问');
+	//ed2k UTF-8再编码
+	$("a[href*='ed2k://']").each(function() {
+		this.href = decodeURIComponent(this.href)
+	});
 
-		//ol fix
-		lis = document.querySelectorAll('ol>li');
-		[].forEach.call(lis, function(li) {
-				if (li.firstChild.nodeName == "#text" || getComputedStyle(li.firstChild).display == "inline") {
-					p = document.createElement('p');
-					if (li.firstChild.nodeName == "#text") p.innerHTML = li.firstChild.textContent;
-				else p.innerHTML = li.firstChild.outerHTML;
-				that = li.firstChild;
-				while (that.nextSibling && (that.nextSibling.nodeName == "#text" || getComputedStyle(that.nextSibling).display == "inline")) { //处理文字+inline元素的情况
-					if (that.nextSibling.nodeName == "#text") p.innerHTML += that.nextSibling.textContent;
-					else p.innerHTML += that.nextSibling.outerHTML;
-					$(that.nextSibling).remove();
-				}
-				$(li.childNodes[0]).remove();
-				if (li.firstChild) {
-					li.insertBefore(p, li.firstChild)
-				} else li.appendChild(p);
-			} else if (li.firstChild.nodeName != "P" && li.firstChild.nodeName != "H6" && getComputedStyle(li.firstChild).display == "block") {
-				p = document.createElement('p');
-				if (li.firstChild) {
-					li.insertBefore(p, li.firstChild)
-				}
+	//ol fix
+	lis = document.querySelectorAll('ol>li');
+	[].forEach.call(lis, function(li) {
+		if (li.firstChild.nodeName == "#text" || getComputedStyle(li.firstChild).display == "inline") {
+			p = document.createElement('p');
+			if (li.firstChild.nodeName == "#text") p.innerHTML = li.firstChild.textContent;
+			else p.innerHTML = li.firstChild.outerHTML;
+			that = li.firstChild;
+			while (that.nextSibling && (that.nextSibling.nodeName == "#text" || getComputedStyle(that.nextSibling).display == "inline")) { //处理文字+inline元素的情况
+				if (that.nextSibling.nodeName == "#text") p.innerHTML += that.nextSibling.textContent;
+				else p.innerHTML += that.nextSibling.outerHTML;
+				$(that.nextSibling).remove();
 			}
-		});
-		$('li>code').each(function() {
+			$(li.childNodes[0]).remove();
+			if (li.firstChild) li.insertBefore(p, li.firstChild)
+			else li.appendChild(p);
+		} else if (li.firstChild.nodeName != "P" && li.firstChild.nodeName != "H6" && getComputedStyle(li.firstChild).display == "block") {
+			p = document.createElement('p');
+			if (li.firstChild) li.insertBefore(p, li.firstChild);
+		}
+	});
+	$('li>code').each(function() {
 		if ($(this).text().substring(0, 1) == "\n") {
 			pre = document.createElement("pre");
 			pre.innerHTML = "<code>" + this.innerHTML.substring(1) + "</code>"

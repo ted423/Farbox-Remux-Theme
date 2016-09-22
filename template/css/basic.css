@@ -546,6 +546,7 @@ dl, menu, ol, ul{
 	border-bottom: 1px dotted #DDD;
 	padding-left: 10px;
 }
+
 #search-bar{width: 50%;}
 
 .baro, .bar {
@@ -609,10 +610,9 @@ dl, menu, ol, ul{
 	vertical-align: middle;
 	color: #333;
 }
-
+a.fa-search{margin-left:5px;}
 a.fa.fa-google{
-	margin-top: 5px !important;
-	padding-left:0px !important;
+	margin-top: 3px !important;
 }
 
 .wikitable{
@@ -673,7 +673,7 @@ ol>li>p:first-child:before,ol>li>h6:before{
     counter-increment: li;
     position: absolute;	
     left: -1.3em;
-    top: 50%;
+    top: 17px;
     margin-top: -1.3em;
     background: #87ceeb;
     height: 2em;
@@ -691,13 +691,18 @@ ol>li>h6{
 	margin: 0px;
 }
 
-/*go-top*/
+/*go-top&login*/
+#login{
+  position:absolute;
+  top:5px;
+  right:20px;
+}
 #go-top{
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  right: 20px;
 }
-#go-top>a{
+#go-top>a,#login>a{
   opacity:0.5;
   color:#444;
 }

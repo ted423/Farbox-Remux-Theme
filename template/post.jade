@@ -9,7 +9,7 @@ block content
 		h2.title= post.title
 		.info
 			i.fa.fa-calendar &nbsp;
-			span.date= post.date.format('%Y.%m.%d')+' '
+			time.date= post.date.format('%Y.%m.%d')+' '
 			|
 			span.visitors
 				i.fa.fa-book &nbsp;
@@ -29,7 +29,7 @@ block content
 						for tag in post.tags
 							a(href="/tags/{{tag}}")= tag
 						&nbsp;|
-				a(class="source",target="_blank",style="cursor:pointer;",onmouseover="javascript:this.href=window.location.href+'?action=show_raw'")= '源码' if lang=='zh_cn' else 'Source'
+				a(class="source",target="_blank",style="cursor:pointer;",onmouseover="javascript:this.href=window.location.href.split('#')[0]+'?action=show_raw'")= '源码' if lang=='zh_cn' else 'Source'
 				if request.is_admin == 1
 					a(class="edit",href="?action=edit",target="_blank")= '编辑' if lang=='zh_cn' else 'Edit'
 		.post_body= post.content
